@@ -1,12 +1,27 @@
 #!/usr/bin/python3
 import sys
+import math
 
 
 def factorize(num):
-    for i in range(2, num // 2 + 1):
+    if num % 2 == 0:
+        print(f"{num}={num // 2}*2")
+        return
+
+    if num % 3 == 0:
+        print(f"{num}={num // 3}*3")
+        return
+
+    sqrt_num = math.isqrt(num)
+    for i in range(5, sqrt_num + 1, 6):
         if num % i == 0:
             print(f"{num}={num // i}*{i}")
-            break
+            return
+        if num % (i + 2) == 0:
+            print(f"{num}={num // (i + 2)}*{i + 2}")
+            return
+
+    print(f"{num} is a prime number")
 
 
 if __name__ == "__main__":
